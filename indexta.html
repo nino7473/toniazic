@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>toniazic — interior design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Handjet:wght,ELGR,ELSH@100..900,1..2,0..16&display=swap">
+<style>
+  :root {
+    --sky:   #D6E8EE;
+    --water: #2E7DA6;
+    --water-light: #3A8DB5;
+    --hill-far:  #7FA66A;
+    --hill-near: #3F7A4E;
+    --sand:  #EDE6DC;
+    --ink:   #141414;
+    --accent:#D9480F;
+    --pad: clamp(28px, 5vw, 72px);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--sky);
+    color: var(--ink);
+    font-family: 'Handjet', 'Courier New', monospace;
+    /* Brick look: ELSH = element shape, ELGR = element grid */
+    font-variation-settings: 'ELSH' 2, 'ELGR' 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  .scene {
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    min-height: 680px;
+    overflow: hidden;
+  }
+  .scene svg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; display: block;
+  }
+  header {
+    position: absolute; top: 0; left: 0; right: 0;
+    padding: var(--pad);
+  }
+  /* Footer occupies exactly the sand band (top edge = waterline at 74.7%),
+     so the links can never reach the blue. */
+  footer {
+    position: absolute; left: 0; right: 0;
+    top: 74.7%; bottom: 0;
+    container-type: size;
+    padding: clamp(10px, 1.6vh, 20px) var(--pad) clamp(14px, 3vh, 44px);
+    display: flex; gap: 16px;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(64px, 11vw, 168px);
+    font-weight: 300;
+    line-height: .8;
+    letter-spacing: .02em;
+    color: var(--accent);
+  }
+  .small {
+    margin: 0;
+    font-size: clamp(20px, 1.8vw, 26px);
+    font-weight: 400;
+    letter-spacing: .08em;
+    line-height: 1.15;
+  }
+  .tagline { margin-top: 6px; }
+
+  nav { display: flex; flex-direction: column; gap: 2px; }
+  nav a {
+    display: block;
+    /* Scales with the sand band's height: 4 lines + 3 gaps always fit inside it */
+    font-size: min(clamp(28px, 4.2vw, 60px), calc((100cqh - 6px) / 4));
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: .04em;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color .2s, font-weight .25s;
+  }
+  nav a:hover, nav a:focus-visible { color: var(--accent); font-weight: 500; outline: none; }
+  .copy { margin: 0; font-size: 18px; letter-spacing: .08em; }
+</style>
+</head>
+<body>
+<main class="scene">
+  <!-- Landscape: sky (background), hills, water, sand -->
+  <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <polygon points="0,74.7 100,74.7 100,100 0,100" fill="var(--sand)"/>
+    <polygon points="0,52.5 51,49.7 61.5,50.2 92.8,63.9 95.8,74.7 0,74.7" fill="var(--water)"/>
+    <polygon points="0,52.5 51,49.7 61.5,50.2 72,54.8 0,58" fill="var(--water-light)" opacity=".55"/>
+    <polygon points="0,40.4 45.7,42 51,49.7 0,52.5" fill="var(--hill-far)"/>
+    <polygon points="100,28.3 61.5,50.2 92.8,63.9 95.8,74.7 100,85.8" fill="var(--hill-near)"/>
+  </svg>
+
+  <header>
+    <div>
+      <h1>toniazic</h1>
+      <p class="small tagline">interior design</p>
+    </div>
+  </header>
+
+  <footer>
+    <nav aria-label="Contact">
+      <a href="tel:+385000000000">phone</a>          <!-- TODO: real number -->
+      <a href="mailto:hello@example.com">mail</a>    <!-- TODO: real email -->
+      <a href="#">projects</a>                       <!-- TODO: link to projects -->
+      <a href="https://instagram.com/" target="_blank" rel="noopener">instagram</a> <!-- TODO: handle -->
+    </nav>
+    <p class="copy">© 2026</p>
+  </footer>
+</main>
+</body>
+</html>
